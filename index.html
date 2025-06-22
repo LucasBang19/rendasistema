@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imersão do Zero ao 100K</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* --- 1. CONFIGURAÇÕES GLOBAIS E VARIÁVEIS --- */
+        :root {
+            --bg-color: #000000;
+            --gold-color: #D4AF37;
+            --text-color: #FFFFFF;
+            --gray-text: #AAAAAA;
+            --dark-gray-bg: #111111;
+            --red-urgent: #FF4500;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* --- 2. ESTRUTURA E LAYOUT --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 25px 20px;
+        }
+
+        header.container {
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 25px 0;
+            border-bottom: 1px solid #222;
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        footer.container {
+            text-align: center;
+        }
+
+        /* --- 3. TEXTOS E TÍTULOS --- */
+        h1, h2, h3 {
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.8rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--gold-color);
+            font-weight: 900;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--gold-color);
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: var(--gray-text);
+            max-width: 650px;
+            margin: 0 auto 1rem auto;
+            text-align: left;
+        }
+        
+        .center-text {
+            text-align: center;
+        }
+
+        .highlight {
+            color: var(--gold-color);
+            font-weight: bold;
+        }
+
+        .small-text {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            text-align: center;
+        }
+
+        /* --- 4. BOTÕES --- */
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--gold-color);
+            color: var(--bg-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-support {
+            background-color: #25D366;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-support:hover {
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+        
+        /* --- 5. COMPONENTES E SEÇÕES ESPECÍFICAS --- */
+        
+        /* Faixa de Urgência */
+        .urgent-banner {
+            background-color: var(--red-urgent);
+            color: var(--text-color);
+            padding: 10px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        /* Lista "Você não precisa" */
+        .no-need-list {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        .no-need-list p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* Lista "O que vai receber" */
+        .features-list .feature-item {
+            background-color: var(--dark-gray-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--gold-color);
+            text-align: left;
+        }
+        .features-list .feature-item h4 {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        /* Detalhes da Imersão */
+        .details-box {
+            border: 2px solid var(--gold-color);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        .details-box p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+        
+        /* Lista de Benefícios (Seção de Preço) */
+        .copy-list {
+            list-style: none;
+            padding-left: 0;
+            text-align: left;
+            max-width: 650px;
+            margin: 1rem auto;
+        }
+        .copy-list li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Caixa de Preço */
+        .price-box {
+            background-color: var(--dark-gray-bg);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .price-box p {
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        .price-box .striked-price {
+            font-size: 1.8rem;
+            text-decoration: line-through;
+            color: #ff4d4d;
+        }
+        .price-box .final-price {
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--gold-color);
+            margin: 5px 0;
+        }
+        
+        /* Selo de Garantia */
+        .guarantee-seal {
+            width: 140px;
+            height: 140px;
+            border: 4px solid var(--gold-color);
+            color: var(--text-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-weight: 700;
+            margin: 10px auto 25px auto;
+            text-align: center;
+            line-height: 1.1;
+        }
+        .guarantee-seal span {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--gold-color);
+        }
+
+        /* FAQ */
+        .faq-item {
+            background-color: var(--dark-gray-bg);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: left;
+        }
+        .faq-question {
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        .faq-answer p { 
+            padding: 0 20px 20px 20px; 
+        }
+        .faq-item.active .faq-answer { 
+            max-height: 300px; 
+        }
+        .faq-item.active .faq-question::after { 
+            transform: rotate(45deg); 
+        }
+
+        /* Rodapé */
+        footer p {
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        footer a { 
+            color: var(--gray-text); 
+        }
+
+        /* --- 6. RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .price-box .final-price { font-size: 4rem; }
+            .no-need-list { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="urgent-banner">ÚLTIMAS VAGAS COM 90% DE DESCONTO!</div>
+
+    <header class="container">
+        <h1>IMERSÃO DO ZERO AO 100K</h1>
+        <p style="font-size: 1.5rem; color: white; text-align: center;">📅 24 de Junho | Ao vivo</p> 
+        <h2 style="text-align: center;">Esse plano simples faz qualquer pessoa faturar <span class="highlight">R$100.000 na internet em apenas 90 dias.</span></h2> 
+        <p>Eu já faturei mais de R$3 milhões com esse plano, e pela primeira vez, você vai ter acesso a ele AO VIVO.</p>
+        <a href="#price" class="btn">QUERO MEU INGRESSO AGORA!</a>
+        <p class="small-text" style="margin-top: 15px;"><strong>ATENÇÃO:</strong>O valor do lote pode virar a qualquer momento, sem aviso.</p>
+        <img src="jessicabackground.jpg" alt="Banner da Imersão do Zero ao 100K" style="width: 100%; max-width: 800px; height: auto; margin-top: 40px; border-radius: 8px;">
+    </header>
+
+    <main>
+        <section class="container">
+            <h2>PARA GANHAR DINHEIRO NA INTERNET DE VERDADE…</h2>
+            <h3>VOCÊ NÃO PRECISA DE NADA DISSO</h3>
+            <div class="no-need-list">
+                <div>
+                    <p>🚫 Ser afiliado</p>
+                    <p>🚫 Aparecer nos stories</p>
+                    <p>🚫 Jogar no tigrinho</p>
+                </div>
+                <div>
+                    <p>🚫 Criar conteúdo todo dia</p>
+                    <p>🚫 Ter milhares de seguidores</p>
+                    <p>🚫 Depender de sorte</p>
+                </div>
+            </div>
+            <br><br>
+            <p style="font-size: 1.2rem; color: white;">A única coisa que você realmente precisa é de um plano simples, testado e validado...</p>
+            <p>✅ Um plano que já gerou mais de R$3 milhões em vendas.</p>
+            <p>✅ Um plano que qualquer iniciante pode executar, sem aparecer, sem seguidores, sem criar conteúdo.</p>
+            <p>✅ Um plano que qualquer pessoa comum consegue faturar R$100.000 em apenas 90 dias.</p>
+        </section>
+
+        <section class="container">
+            <h2 class="highlight">O QUE VOCÊ VAI RECEBER NA IMERSÃO ZERO AO 100K</h2>
+            <p>Você vai sair da Imersão com um plano prático para faturar seus primeiros R$ 100.000 em apenas 90 dias, mesmo que nunca tenha vendido nada antes.</p>
+            <div class="features-list" style="margin-top: 30px;">
+                <div class="feature-item"><h4>Como criar uma renda automática do zero</h4><p>Crie produtos digitais irresistíveis e ofertas milionárias que vendem muito todos os dias, mesmo sem experiência.</p></div>
+                <div class="feature-item"><h4>Como usar Inteligência Artificial para automatizar tudo</h4><p>A IA faz 90% do trabalho por você. Basta configurar do jeito certo e deixar ela rodar no automático.</p></div>
+                <div class="feature-item"><h4>Como viver do digital sem aparecer e sem seguidores</h4><p>Fature alto sem gravar vídeos, sem depender de conteúdo e sem se expor. Um negócio 100% no piloto automático.</p></div>
+                <div class="feature-item"><h4>Como faturar R$100.000 nos próximos 90 dias</h4><p>Com o mesmo plano que já me rendeu R$3 milhões e que vai colocar mais R$6 milhões no meu bolso ainda este ano.</p></div>
+            </div>
+        </section>
+
+      <section class="container">
+        <h2 style="text-align: center;">TODOS OS DETALHES DA IMERSÃO!</h2>
+        <div class="details-box">
+            <p><strong class="highlight">📍 Onde:</strong> A Imersão do Zero ao 100K vai ser online e ao vivo em uma sala fechada.</p>
+            <p><strong class="highlight">📅 Quando:</strong> Terça-Feira, dia 24 de Junho, às 20h. (Horário de Brasília)</p>
+            <p><strong class="highlight">🎯 O que é:</strong> Um plano prático e validado para você sair do zero e faturar os seus primeiros R$ 100.000 em até 90 dias.</p>
+        </div>
+    </section>
+
+    <section class="container" style="text-align: center;">
+        <h2>O QUE VAI ACONTECER NA IMERSÃO ZERO AO 100K</h2>
+        <p>É isso que você vai aprender na imersão para faturar seus primeiros R$100.000 em 90 dias, mesmo começando do zero.</p>
+        <div style="text-align: left; max-width: 600px; margin: 20px auto;">
+            <p style="color: white"><strong>✅ PASSO 1: A Oferta Perfeita que Vende Sozinha</strong></p>
+            <P>Descubra como encontrar um mercado lucrativo, escolher produtos que vendem sozinhos e criar uma oferta magnética que faz as pessoas comprarem de você todos os dias.</p>
+            <p style="color: white;"><strong>✅ PASSO 2: Criando sua Máquina Automática de Vendas</strong></P>
+            <P>Eu vou te mostrar na prática como usar a Inteligência Artificial para escrever scripts, criar anúncios e colocar sua campanha para rodar em menos de 5 minutos.</p>
+            <p style="color: white;"><strong>✅ PASSO 3: A Mente Milionária que Mantém Você no Jogo</strong></p>
+            <P>Aprenda o segredo para não sabotar seus resultados. Eu vou te mostrar o caminho mais rápido e seguro para você ter resultado de verdade.</p>
+        </div>
+        <p style="color: white;"><strong>TUDO ISSO, AO VIVO E SEM REPLAY!</strong></p>
+        <p>Você vai sair com o plano pronto para faturar.</p>
+    </section>
+
+    <section id="price" class="container" style="text-align: center;">
+        <h2>QUANTO CUSTA PARTICIPAR?</h2>
+        <p class="center-text">Meus mentorados já pagaram R$ 15.000 por esse plano e hoje você vai garantir tudo isso por um valor ridículo:</p>
+        <ul class="copy-list"> 
+            <li>✔️ Imersão do Zero ao 100K AO VIVO</li> 
+            <li>✔️ Estratégia completa para faturar R$100.000 sem aparecer</li> 
+            <li>✔️ Como usar a IA para fazer 90% do trabalho para você</li> 
+            <li>✔️ Como criar uma renda automática na Internet</li> 
+        </ul>
+        <div class="price-box">
+            <p>Tudo isso de</p>
+            <p class="striked-price">R$ 397</p>
+            <p>por apenas</p>
+            <p class="final-price">R$ 37</p> 
+            <p>(Está quase de graça, literalmente)</p>
+            <a href="https://pay.kiwify.com.br/MGEbSgA" target="_blank" class="btn">QUERO MEU INGRESSO AGORA!</a>
+        </div>
+        <p class="small-text" style="margin-top: 15px;"><strong>ATENÇÃO:</strong> O valor do lote pode virar a qualquer momento, sem aviso.</p>
+    </section>
+
+        <section class="container" style="text-align: center;">
+            <div class="guarantee-seal"><span>RISCO</span>ZERO</div>
+            <h2>GARANTIA INCONDICIONAL</h2>
+            <p>Eu quero que você tome a decisão mais inteligente hoje e por isso, eu fico com todo o risco. Se você participar da Imersão e, por qualquer motivo, sentir que ela não entregou o que você precisava para faturar R$ 100.000 em até 90 dias, eu devolvo 100% do seu investimento. Sem enrolação e sem burocracia.</p>
+            <p style="color: white; font-weight: bold; text-align: center;">✅ Ou você tem resultado. Ou recebe seu dinheiro de volta. Simples assim.</p>
+            <a href=#price class="btn">QUERO MEU INGRESSO COM GARANTIA!</a>
+            <p class="small-text" style="margin-top: 15px;"><strong>ATENÇÃO:</strong> O valor do lote pode virar a qualquer momento, sem aviso.</p>
+        </section>
+
+        <section class="container" style="text-align: center;">
+            <h2>QUEM VAI TE ENTREGAR O PLANO?</h2>
+            <img src="/jessica1.jpg" alt="Foto de Jéssica Couto" style="width: 150px; height: 150px; border-radius: 50%; border: 4px solid #D4AF37; object-fit: cover; margin-bottom: 20px; object-position: center top;">
+            <h3>JÉSSICA COUTO</h3>
+            <p>Já faturei mais de R$3 milhões no digital aplicando o mesmo plano que vou te entregar na Imersão. O que eu ensino não vem de teoria, nem de achismo. São estratégias testadas, validadas e que continuam gerando resultados todos os dias para mim e para todos os meus mentorados.</p>
+            <p>Se você quer parar de perder tempo com o que não funciona e colocar o pé no acelerador, eu vou te mostrar o caminho</p>
+            <a href="#price" class="btn">QUERO MEU INGRESSO AGORA!</a>
+            <p class="small-text" style="margin-top: 15px;"><strong>ATENÇÃO:</strong>O valor do lote pode virar a qualquer momento, sem aviso.</p>
+        </section>
+
+        <section class="container" style="text-align: center;">
+            <h2>VOCÊ AINDA TEM DÚVIDA?</h2>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-question">Vai ficar gravado?</div><div class="faq-answer"><p>A Imersão é ao vivo, com prática e interação. A imersão não ficará gravada, então esteja 100% comprometido.</p></div></div>
+                <div class="faq-item"><div class="faq-question">Estou começando do zero. Serve pra mim?</div><div class="faq-answer"><p>Sim. A Imersão foi criada exatamente pra isso: te dar um plano simples, validado e direto, mesmo que você nunca tenha vendido nada antes.</p></div></div>
+                <div class="faq-item"><div class="faq-question">Preciso ter seguidores, um produto ou experiência?</div><div class="faq-answer"><p>Não. Você não precisa aparecer, ter seguidores ou um produto pronto. Você vai descobrir como montar tudo isso do zero.</p></div></div>
+                <div class="faq-item"><div class="faq-question">Vai ser só teoria ou vamos colocar a mão na massa?</div><div class="faq-answer"><p>Nada de aula passiva. Durante a imersão você vai ver na prática onde clicar, qual IA usar e como montar sua estrutura de vendas passo a passo.</p></div></div>
+                <div class="faq-item"><div class="faq-question">Quais as formas de pagamento?</div><div class="faq-answer"><p>Você pode se inscrever via PIX ou Cartão Parcelado em até 4x. O checkout é 100% seguro.</p></div></div>
+                <div class="faq-item"><div class="faq-question">Onde e quando vai ser?</div><div class="faq-answer"><p>A Imersão acontece dia 24/06 às 20h (horário de Brasília) ao vivo pelo Zoom. Assim que garantir sua vaga, você recebe o acesso ao grupo oficial com todos os links e instruções.</p></div></div>
+                <div class="faq-item"><div class="faq-question">Isso é marketing multinível, pirâmide ou esquema?</div><div class="faq-answer"><p>Não. O que você vai aprender é um modelo de negócio 100% legítimo e ético. Você vai vender produtos digitais que as pessoas já querem comprar.</p></div></div>
+                <div class="faq-item"><div class="faq-question">Tem suporte ou vou ficar perdido?</div><div class="faq-answer"><p>Você terá acesso ao Grupo Oficial da Imersão, onde vai encontrar os links da aula, material de apoio e avisos.</p></div></div>
+                <div class="faq-item"><div class="faq-question">Quanto tempo por dia eu preciso pra aplicar?</div><div class="faq-answer"><p>Com 1 hora por dia, você já consegue aplicar o plano. O que eu ensino não depende de conteúdo diário nem de ficar escravo da internet, só de execução estratégica.</p></div></div>
+                <div class="faq-item"><div class="faq-question">Isso funciona mesmo para quem já tentou de tudo e nunca conseguiu vender?</div><div class="faq-answer"><p>Sim. O erro está em seguir “dicas soltas”. O que você vai receber é um plano validado, direto ao ponto, que já gerou mais de R$ 3 milhões e foi usado por pessoas que também estavam desacreditadas.</p></div></div>
+            </div>
+            <a href="#price" class="btn">QUERO GARANTIR MEU INGRESSO!</a> 
+            <p class="small-text" style="margin-top: 15px;"><strong>ATENÇÃO:</strong> O valor do lote pode virar a qualquer momento, sem aviso.</p>
+        </section>
+
+        <footer class="container">
+            <h3>FICOU ALGUMA DÚVIDA?</h3>
+            <p>Toque no botão abaixo e fale com o Suporte</p>
+            <a href="http://wa.me/553799272480" target="_blank" class="btn btn-support">FALAR COM O SUPORTE</a>
+            <div style="margin-top: 50px; border-top: 1px solid #222; padding-top: 30px;">
+                <p>JP CURSOS LTDA - ME - 40.992.116/0001-79 | Todos os direitos reservados</p>
+                <p><a href="#">Termos de Uso</a> | <a href="#">Políticas de Privacidade</a></p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(clickedItem => {
+            const question = clickedItem.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = clickedItem.classList.contains('active');
+                faqItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+                if (!isActive) {
+                    clickedItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1284104496018385');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" 
+            src="https://www.facebook.com/tr?id=1284104496018385&ev=PageView&noscript=1" />
+    </noscript>
+    <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" async defer></script>
+</body>
+</html>
